@@ -1,6 +1,8 @@
 class Movable {
   x = 120;
   y = 200;
+  height = 100;
+  width = 100;
   img;
 
   loadImage(path) {
@@ -9,4 +11,6 @@ class Movable {
   }
 
   moveRight() {}
+
+  moveLeft() {}
 }
