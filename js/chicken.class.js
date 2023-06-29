@@ -1,1 +1,1 @@
-class chicken {}
+class Chicken {}
