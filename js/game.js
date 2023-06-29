@@ -5,5 +5,5 @@ let world = new World();
 function init() {
   canvas = document.getElementById("canvas");
   ctx = canvas.getContext("2d");
-  console.log("Character: " + world.character);
+  console.log("Character: ", world.character);
 }
