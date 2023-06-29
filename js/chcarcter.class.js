@@ -1,3 +1,0 @@
-class Character {
-  jump() {}
-}

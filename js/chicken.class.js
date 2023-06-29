@@ -1,1 +1,1 @@
-class Chicken {}
+class Chicken extends Movable {}
