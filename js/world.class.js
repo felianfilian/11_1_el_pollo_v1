@@ -19,47 +19,31 @@ class World {
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-    this.backgrounds.forEach((background) => {
-      this.ctx.drawImage(
-        background.img,
-        background.x,
-        background.y,
-        background.width,
-        background.height
-      );
-    });
+    this.iterateDrawObjects(this.backgrounds);
+    this.iterateDrawObjects(this.clouds);
+    this.iterateDrawObjects(this.enemies);
 
-    this.clouds.forEach((cloud) => {
-      this.ctx.drawImage(
-        cloud.img,
-        cloud.x,
-        cloud.y,
-        cloud.width,
-        cloud.height
-      );
-    });
-
-    this.ctx.drawImage(
-      this.character.img,
-      this.character.x,
-      this.character.y,
-      this.character.width,
-      this.character.height
-    );
-
-    for (let chick of this.enemies) {
-      this.ctx.drawImage(
-        chick.img,
-        chick.x,
-        chick.y,
-        chick.width,
-        chick.height
-      );
-    }
+    this.addToCanvas(this.character);
 
     let self = this;
     requestAnimationFrame(function () {
       self.draw();
     });
+  }
+
+  iterateDrawObjects(drawItems) {
+    drawItems.forEach((drawItem) => {
+      this.addToCanvas(drawItem);
+    });
+  }
+
+  addToCanvas(drawItem) {
+    this.ctx.drawImage(
+      drawItem.img,
+      drawItem.x,
+      drawItem.y,
+      drawItem.width,
+      drawItem.height
+    );
   }
 }
