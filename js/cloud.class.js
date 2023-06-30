@@ -10,7 +10,7 @@ class Cloud extends Movable {
 
   animate() {
     setInterval(() => {
-      this.x -= 5;
+      this.x -= 0.4;
     }, 40);
   }
 }
