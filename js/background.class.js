@@ -4,7 +4,9 @@ class Background extends Movable {
   height = 480;
   width = 720;
 
-  constructor(path) {
+  constructor(path, x, y) {
     super().loadImage(path);
+    this.x = x;
+    this.y = y;
   }
 }
