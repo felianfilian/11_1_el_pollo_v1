@@ -16,6 +16,19 @@ class Character extends Movable {
     this.y = y;
     this.height = 300;
     this.width = 150;
+
+    this.animate();
+  }
+
+  animate() {
+    setInterval(() => {
+      if (this.currentImage >= this.ANIM_WALK.length) {
+        this.currentImage = 0;
+      }
+      let path = this.ANIM_WALK[this.currentImage];
+      this.img = this.imageChache[path];
+      this.currentImage++;
+    });
   }
 
   jump() {}
