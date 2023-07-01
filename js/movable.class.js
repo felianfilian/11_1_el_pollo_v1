@@ -5,6 +5,7 @@ class Movable {
   width = 100;
   img;
   imageChache = [];
+  currentImage = 0;
 
   loadImage(path) {
     this.img = new Image();
