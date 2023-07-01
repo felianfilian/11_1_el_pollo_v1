@@ -27,5 +27,9 @@ class Movable {
 
   moveRight() {}
 
-  moveLeft() {}
+  moveLeft() {
+    setInterval(() => {
+      this.x -= 0.4;
+    }, 40);
+  }
 }
