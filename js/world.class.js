@@ -1,6 +1,7 @@
 class World {
   ctx;
   canvas;
+  keyboard;
 
   character = new Character(100, 150);
   enemies = [new Chicken(), new Chicken(), new Chicken()];
@@ -12,10 +13,12 @@ class World {
     new Background("img/5_background/layers/1_first_layer/2.png", 0, 0),
   ];
 
-  constructor(canvas) {
+  constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
+    this.keyboard = keyboard;
     this.draw();
+    this.setworld();
   }
 
   draw() {
@@ -31,6 +34,10 @@ class World {
     requestAnimationFrame(function () {
       self.draw();
     });
+  }
+
+  setworld() {
+    this.character.world = this;
   }
 
   iterateDrawObjects(drawItems) {
