@@ -30,6 +30,7 @@ class Character extends Movable {
         this.x -= this.speed;
         this.lookLeft = true;
       }
+      this.world.camera_x = this.x;
     }, 1000 / 60);
 
     setInterval(() => {
