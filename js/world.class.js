@@ -2,6 +2,7 @@ class World {
   ctx;
   canvas;
   keyboard;
+  camera_x = -100;
 
   character = new Character(100, 150);
   enemies = [new Chicken(), new Chicken(), new Chicken()];
@@ -23,12 +24,14 @@ class World {
 
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.translate(this.camera_x, 0);
 
     this.iterateDrawObjects(this.backgrounds);
     this.iterateDrawObjects(this.clouds);
     this.iterateDrawObjects(this.enemies);
 
     this.addToCanvas(this.character);
+    this.ctx.translate(-this.camera_x, 0);
 
     let self = this;
     requestAnimationFrame(function () {
@@ -47,6 +50,12 @@ class World {
   }
 
   addToCanvas(drawItem) {
+    if (drawItem.lookLeft) {
+      this.ctx.save();
+      this.ctx.translate(drawItem.width, 0);
+      this.ctx.scale(-1, 1);
+      drawItem.x = drawItem.x * -1;
+    }
     this.ctx.drawImage(
       drawItem.img,
       drawItem.x,
@@ -54,5 +63,9 @@ class World {
       drawItem.width,
       drawItem.height
     );
+    if (drawItem.lookLeft) {
+      drawItem.x = drawItem.x * -1;
+      this.ctx.restore();
+    }
   }
 }

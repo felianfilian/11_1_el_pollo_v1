@@ -8,6 +8,7 @@ class Movable {
   img;
   imageChache = [];
   currentImage = 0;
+  lookLeft = false;
 
   loadImage(path) {
     this.img = new Image();
