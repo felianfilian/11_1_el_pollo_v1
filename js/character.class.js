@@ -7,6 +7,7 @@ class Character extends Movable {
     "img/2_character_pepe/2_walk/W-25.png",
     "img/2_character_pepe/2_walk/W-26.png",
   ];
+  speed = 8;
 
   constructor(x, y) {
     super().loadImage("img/2_character_pepe/1_idle/idle/I-1.png");
@@ -20,6 +21,15 @@ class Character extends Movable {
   }
 
   animate() {
+    setInterval(() => {
+      if (this.world.keyboard.RIGHT) {
+        this.x += this.speed;
+      }
+      if (this.world.keyboard.LEFT) {
+        this.x -= this.speed;
+      }
+    }, 1000 / 60);
+
     setInterval(() => {
       if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
         if (this.currentImage >= this.ANIM_WALK.length) {
