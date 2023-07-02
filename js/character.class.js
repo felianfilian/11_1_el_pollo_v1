@@ -21,12 +21,14 @@ class Character extends Movable {
 
   animate() {
     setInterval(() => {
-      if (this.currentImage >= this.ANIM_WALK.length) {
-        this.currentImage = 0;
+      if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+        if (this.currentImage >= this.ANIM_WALK.length) {
+          this.currentImage = 0;
+        }
+        let path = this.ANIM_WALK[this.currentImage];
+        this.img = this.imageChache[path];
+        this.currentImage++;
       }
-      let path = this.ANIM_WALK[this.currentImage];
-      this.img = this.imageChache[path];
-      this.currentImage++;
     }, 1000 / 10);
   }
 
