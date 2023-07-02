@@ -3,6 +3,8 @@ class Movable {
   y = 340;
   height = 100;
   width = 100;
+  speed = 0.4;
+
   img;
   imageChache = [];
   currentImage = 0;
@@ -29,7 +31,7 @@ class Movable {
 
   moveLeft() {
     setInterval(() => {
-      this.x -= 0.4;
+      this.x -= this.speed;
     }, 40);
   }
 }
