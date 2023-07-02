@@ -24,13 +24,14 @@ class World {
 
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
     this.ctx.translate(this.camera_x, 0);
 
     this.iterateDrawObjects(this.backgrounds);
+    this.addToCanvas(this.character);
     this.iterateDrawObjects(this.clouds);
     this.iterateDrawObjects(this.enemies);
 
-    this.addToCanvas(this.character);
     this.ctx.translate(-this.camera_x, 0);
 
     let self = this;
