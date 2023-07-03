@@ -9,6 +9,8 @@ class Character extends Movable {
   ];
   speed = 8;
 
+  sound_walk = new Audio("audio/walk01.wav");
+
   constructor(x, y) {
     super().loadImage("img/2_character_pepe/1_idle/idle/I-1.png");
     this.loadImages(this.ANIM_WALK);
@@ -31,9 +33,10 @@ class Character extends Movable {
         this.lookLeft = true;
       }
       this.world.camera_x = -this.x + 100;
-    }, 1000 / 60);
+    }, 1000 / 30);
 
     setInterval(() => {
+      this.sound_walk.pause();
       if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
         if (this.currentImage >= this.ANIM_WALK.length) {
           this.currentImage = 0;
@@ -41,6 +44,7 @@ class Character extends Movable {
         let path = this.ANIM_WALK[this.currentImage];
         this.img = this.imageChache[path];
         this.currentImage++;
+        this.sound_walk.play();
       }
     }, 1000 / 10);
   }
