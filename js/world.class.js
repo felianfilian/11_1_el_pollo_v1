@@ -6,6 +6,10 @@ class World {
 
   character = new Character(100, 150);
 
+  enemies = level01.enemies;
+  clouds = level01.clouds;
+  backgrounds = level01.backgrounds;
+
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
