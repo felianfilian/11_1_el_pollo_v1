@@ -5,10 +5,7 @@ class World {
   camera_x = -100;
 
   character = new Character(100, 150);
-
-  enemies = level01.enemies;
-  clouds = level01.clouds;
-  backgrounds = level01.backgrounds;
+  level = level01;
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -23,10 +20,10 @@ class World {
 
     this.ctx.translate(this.camera_x, 0);
 
-    this.iterateDrawObjects(this.backgrounds);
+    this.iterateDrawObjects(this.level.backgrounds);
     this.addToCanvas(this.character);
-    this.iterateDrawObjects(this.clouds);
-    this.iterateDrawObjects(this.enemies);
+    this.iterateDrawObjects(this.level.clouds);
+    this.iterateDrawObjects(this.level.enemies);
 
     this.ctx.translate(-this.camera_x, 0);
 
