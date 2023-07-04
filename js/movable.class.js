@@ -37,7 +37,7 @@ class Movable {
   }
 
   playAnimation(images) {
-    if (this.currentImage >= this.ANIM_WALK.length) {
+    if (this.currentImage >= images.length) {
       this.currentImage = 0;
     }
     let path = images[this.currentImage];
