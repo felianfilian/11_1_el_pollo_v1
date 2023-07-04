@@ -10,6 +10,7 @@ class Character extends Movable {
   speed = 8;
 
   sound_walk = new Audio("audio/walk01.wav");
+  sound_jump = new Audio("audio/jump01.wav");
 
   constructor(x, y) {
     super().loadImage("img/2_character_pepe/1_idle/idle/I-1.png");
@@ -24,6 +25,7 @@ class Character extends Movable {
 
   animate() {
     setInterval(() => {
+      this.sound_jump.pause();
       if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
         this.x += this.speed;
         this.lookLeft = false;
@@ -31,6 +33,9 @@ class Character extends Movable {
       if (this.world.keyboard.LEFT && this.x > 0) {
         this.x -= this.speed;
         this.lookLeft = true;
+      }
+      if (this.world.keyboard.SPACE) {
+        this.sound_jump.play();
       }
       this.world.camera_x = -this.x + 100;
     }, 1000 / 30);
