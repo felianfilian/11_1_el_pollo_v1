@@ -7,6 +7,7 @@ class Character extends Movable {
     "img/2_character_pepe/2_walk/W-25.png",
     "img/2_character_pepe/2_walk/W-26.png",
   ];
+  ANIM_JUMP = [];
   speed = 8;
 
   sound_walk = new Audio("audio/walk01.wav");
