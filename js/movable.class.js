@@ -35,4 +35,13 @@ class Movable {
       this.x -= this.speed;
     }, 40);
   }
+
+  playAnimation(images) {
+    if (this.currentImage >= this.ANIM_WALK.length) {
+      this.currentImage = 0;
+    }
+    let path = images[this.currentImage];
+    this.img = this.imageChache[path];
+    this.currentImage++;
+  }
 }
