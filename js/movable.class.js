@@ -4,6 +4,9 @@ class Movable {
   height = 100;
   width = 100;
   speed = 0.4;
+  speedY = 0;
+  acceleration = 2.5;
+  groundLevel = 140;
 
   img;
   imageChache = [];
@@ -43,5 +46,18 @@ class Movable {
     let path = images[this.currentImage];
     this.img = this.imageChache[path];
     this.currentImage++;
+  }
+
+  applyGravity() {
+    setInterval(() => {
+      if (!this.isGrounded() || this.speedY > 0) {
+        this.y -= this.speedY;
+        this.speedY -= this.acceleration;
+      }
+    }, 1000 / 30);
+  }
+
+  isGrounded() {
+    return this.y > this.groundLevel;
   }
 }

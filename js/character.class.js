@@ -7,6 +7,18 @@ class Character extends Movable {
     "img/2_character_pepe/2_walk/W-25.png",
     "img/2_character_pepe/2_walk/W-26.png",
   ];
+  ANIM_JUMP = [
+    "img/2_character_pepe/3_jump/J-31.png",
+    "img/2_character_pepe/3_jump/J-32.png",
+    "img/2_character_pepe/3_jump/J-33.png",
+    "img/2_character_pepe/3_jump/J-34.png",
+    "img/2_character_pepe/3_jump/J-35.png",
+    "img/2_character_pepe/3_jump/J-36.png",
+    "img/2_character_pepe/3_jump/J-37.png",
+    "img/2_character_pepe/3_jump/J-38.png",
+    "img/2_character_pepe/3_jump/J-39.png",
+  ];
+
   ANIM_JUMP = [];
   speed = 8;
 
@@ -22,6 +34,7 @@ class Character extends Movable {
     this.width = 150;
 
     this.animate();
+    this.applyGravity();
   }
 
   animate() {

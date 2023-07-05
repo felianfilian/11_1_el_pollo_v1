@@ -4,7 +4,7 @@ class World {
   keyboard;
   camera_x = -100;
 
-  character = new Character(100, 150);
+  character = new Character(100, 80);
   level = level01;
 
   constructor(canvas, keyboard) {
