@@ -12,7 +12,14 @@ class Chicken extends Movable {
 
     this.speed = 0.2 + Math.random() * 0.8;
 
+    this.movement();
     this.animate();
+  }
+
+  movement() {
+    setInterval(() => {
+      this.moveLeft();
+    }, 1000 / 40);
   }
 
   animate() {
