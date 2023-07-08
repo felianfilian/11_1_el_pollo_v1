@@ -54,7 +54,8 @@ class Character extends Movable {
         this.moveLeft();
         this.lookLeft = true;
       }
-      if (this.world.keyboard.SPACE) {
+
+      if (this.world.keyboard.SPACE && this.isGrounded()) {
         super.jump();
         this.sound_jump.play();
       }
@@ -65,10 +66,9 @@ class Character extends Movable {
   animate() {
     setInterval(() => {
       this.sound_walk.pause();
-      if (!this.isGrounded) {
+      if (!this.isGrounded()) {
         this.playAnimation(this.ANIM_JUMP);
-      }
-      if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+      } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
         this.playAnimation(this.ANIM_WALK);
         this.sound_walk.play();
       }

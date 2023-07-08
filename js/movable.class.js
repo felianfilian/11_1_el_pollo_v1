@@ -65,7 +65,7 @@ class Movable {
   }
 
   isGrounded() {
-    return this.y > this.groundLevel;
+    return this.y >= this.groundLevel;
   }
 
   draw() {}
