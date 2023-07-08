@@ -31,12 +31,16 @@ class Movable {
     });
   }
 
-  moveRight() {}
+  moveRight() {
+    this.x += this.speed;
+  }
 
   moveLeft() {
-    setInterval(() => {
-      this.x -= this.speed;
-    }, 40);
+    this.x -= this.speed;
+  }
+
+  jump() {
+    this.speedY = 25;
   }
 
   playAnimation(images) {
