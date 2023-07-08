@@ -28,16 +28,22 @@ class Character extends Movable {
   constructor(x, y) {
     super().loadImage("img/2_character_pepe/1_idle/idle/I-1.png");
     this.loadImages(this.ANIM_WALK);
+    this.loadImages(this.ANIM_JUMP);
     this.x = x;
     this.y = y;
     this.height = 300;
     this.width = 150;
 
-    this.animate();
+    this.update();
     this.applyGravity();
   }
 
-  animate() {
+  update() {
+    this.movement();
+    this.animate();
+  }
+
+  movement() {
     setInterval(() => {
       this.sound_jump.pause();
       if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
@@ -49,13 +55,19 @@ class Character extends Movable {
         this.lookLeft = true;
       }
       if (this.world.keyboard.SPACE) {
+        this.speedY = 20;
         this.sound_jump.play();
       }
       this.world.camera_x = -this.x + 100;
     }, 1000 / 30);
+  }
 
+  animate() {
     setInterval(() => {
       this.sound_walk.pause();
+      if (!this.isGrounded) {
+        this.playAnimation(this.ANIM_JUMP);
+      }
       if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
         this.playAnimation(this.ANIM_WALK);
         this.sound_walk.play();

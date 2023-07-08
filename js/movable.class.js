@@ -52,6 +52,9 @@ class Movable {
     setInterval(() => {
       if (!this.isGrounded() || this.speedY > 0) {
         this.y -= this.speedY;
+        if (this.y > this.groundLevel) {
+          this.y = this.groundLevel;
+        }
         this.speedY -= this.acceleration;
       }
     }, 1000 / 30);
