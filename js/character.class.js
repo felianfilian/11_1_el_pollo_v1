@@ -1,4 +1,16 @@
 class Character extends Movable {
+  ANIM_IDLE = [
+    "img/2_character_pepe/1_idle/idle/I-1.png",
+    "img/2_character_pepe/1_idle/idle/I-2.png",
+    "img/2_character_pepe/1_idle/idle/I-3.png",
+    "img/2_character_pepe/1_idle/idle/I-4.png",
+    "img/2_character_pepe/1_idle/idle/I-5.png",
+    "img/2_character_pepe/1_idle/idle/I-6.png",
+    "img/2_character_pepe/1_idle/idle/I-7.png",
+    "img/2_character_pepe/1_idle/idle/I-8.png",
+    "img/2_character_pepe/1_idle/idle/I-9.png",
+    "img/2_character_pepe/1_idle/idle/I-10.png",
+  ];
   ANIM_WALK = [
     "img/2_character_pepe/2_walk/W-21.png",
     "img/2_character_pepe/2_walk/W-22.png",
@@ -19,7 +31,6 @@ class Character extends Movable {
     "img/2_character_pepe/3_jump/J-39.png",
   ];
 
-  ANIM_JUMP = [];
   speed = 8;
 
   sound_walk = new Audio("audio/walk01.wav");
@@ -27,6 +38,7 @@ class Character extends Movable {
 
   constructor(x, y) {
     super().loadImage("img/2_character_pepe/1_idle/idle/I-1.png");
+    this.loadImages(this.ANIM_IDLE);
     this.loadImages(this.ANIM_WALK);
     this.loadImages(this.ANIM_JUMP);
     this.x = x;
@@ -71,9 +83,9 @@ class Character extends Movable {
       } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
         this.playAnimation(this.ANIM_WALK);
         this.sound_walk.play();
+      } else {
+        this.playAnimation(this.ANIM_IDLE);
       }
     }, 1000 / 10);
   }
-
-  jump() {}
 }

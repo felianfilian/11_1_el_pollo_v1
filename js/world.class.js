@@ -54,6 +54,11 @@ class World {
       drawItem.width,
       drawItem.height
     );
+    this.ctx.beginPath();
+    this.ctx.lineWidth = "5";
+    this.addToCanvas.strokeStyle = "blue";
+    this.ctx.rect(this.x, this.y, this.width, this.height);
+    this.ctx.stroke();
 
     if (drawItem.lookLeft) {
       this.flipImageBack(drawItem);

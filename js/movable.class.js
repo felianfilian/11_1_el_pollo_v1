@@ -40,7 +40,7 @@ class Movable {
   }
 
   jump() {
-    this.speedY = 25;
+    this.speedY = 30;
   }
 
   playAnimation(images) {
@@ -68,7 +68,7 @@ class Movable {
     return this.y >= this.groundLevel;
   }
 
-  draw() {}
+  draw(ctx) {}
 
   drawFrame() {}
 }
