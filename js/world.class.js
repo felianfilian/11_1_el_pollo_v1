@@ -45,10 +45,7 @@ class World {
 
   addToCanvas(drawItem) {
     if (drawItem.lookLeft) {
-      this.ctx.save();
-      this.ctx.translate(drawItem.width, 0);
-      this.ctx.scale(-1, 1);
-      drawItem.x = drawItem.x * -1;
+      this.flipImage();
     }
     this.ctx.drawImage(
       drawItem.img,
@@ -57,9 +54,21 @@ class World {
       drawItem.width,
       drawItem.height
     );
+
     if (drawItem.lookLeft) {
-      drawItem.x = drawItem.x * -1;
-      this.ctx.restore();
+      this.flipImageBack();
     }
+  }
+
+  flipImage() {
+    this.ctx.save();
+    this.ctx.translate(drawItem.width, 0);
+    this.ctx.scale(-1, 1);
+    drawItem.x = drawItem.x * -1;
+  }
+
+  flipImageBack() {
+    drawItem.x = drawItem.x * -1;
+    this.ctx.restore();
   }
 }
