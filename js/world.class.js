@@ -74,4 +74,8 @@ class World {
     drawItem.x = drawItem.x * -1;
     this.ctx.restore();
   }
+
+  checkCollissions() {
+    setInterval(() => {});
+  }
 }
