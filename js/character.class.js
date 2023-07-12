@@ -39,6 +39,11 @@ class Character extends Movable {
     "img/2_character_pepe/5_dead/D-56.png",
     "img/2_character_pepe/5_dead/D-57.png",
   ];
+  ANIM_HURT = [
+    "img/2_character_pepe/4_hurt/H-41.png",
+    "img/2_character_pepe/4_hurt/H-42.png",
+    "img/2_character_pepe/4_hurt/H-43.png",
+  ];
 
   speed = 8;
 
@@ -50,6 +55,7 @@ class Character extends Movable {
     this.loadImages(this.ANIM_IDLE);
     this.loadImages(this.ANIM_WALK);
     this.loadImages(this.ANIM_JUMP);
+    this.loadImages(this.ANIM_DEAD);
     this.x = x;
     this.y = y;
     this.height = 300;
@@ -87,13 +93,17 @@ class Character extends Movable {
   animate() {
     setInterval(() => {
       this.sound_walk.pause();
-      if (!this.isGrounded()) {
-        this.playAnimation(this.ANIM_JUMP);
-      } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-        this.playAnimation(this.ANIM_WALK);
-        this.sound_walk.play();
+      if (this.isDead()) {
+        this.playAnimationOnce(this.ANIM_DEAD);
       } else {
-        this.playAnimation(this.ANIM_IDLE);
+        if (!this.isGrounded()) {
+          this.playAnimation(this.ANIM_JUMP);
+        } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+          this.playAnimation(this.ANIM_WALK);
+          this.sound_walk.play();
+        } else {
+          this.playAnimation(this.ANIM_IDLE);
+        }
       }
     }, 1000 / 10);
   }

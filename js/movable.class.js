@@ -12,6 +12,7 @@ class Movable {
   img;
   imageChache = [];
   currentImage = 0;
+  deathImage = 0;
   lookLeft = false;
 
   loadImage(path) {
@@ -51,6 +52,14 @@ class Movable {
     let path = images[this.currentImage];
     this.img = this.imageChache[path];
     this.currentImage++;
+  }
+
+  playAnimationOnce(images) {
+    if (this.deathImage < images.length - 1) {
+      let path = images[this.deathImage];
+      this.img = this.imageChache[path];
+      this.deathImage++;
+    }
   }
 
   applyGravity() {
@@ -101,7 +110,7 @@ class Movable {
     }
   }
 
-  isDeaD() {
+  isDead() {
     return this.energy <= 0;
   }
 }
