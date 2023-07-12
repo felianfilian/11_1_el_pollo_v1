@@ -7,6 +7,7 @@ class Movable {
   speedY = 0;
   acceleration = 2.5;
   groundLevel = 140;
+  energy = 100;
 
   img;
   imageChache = [];
