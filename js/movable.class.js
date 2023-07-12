@@ -93,4 +93,15 @@ class Movable {
       this.y <= obj.y + obj.height
     );
   }
+
+  getDamage(damage) {
+    this.energy -= damage;
+    if (this.energy <= 0) {
+      this.energy = 0;
+    }
+  }
+
+  isDeaD() {
+    return this.energy <= 0;
+  }
 }
