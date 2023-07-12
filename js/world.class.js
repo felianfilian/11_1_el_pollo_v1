@@ -80,7 +80,8 @@ class World {
     setInterval(() => {
       this.level.enemies.forEach((enemy) => {
         if (this.character.isColliding(enemy)) {
-          console.log("collission");
+          this.character.energy -= 2;
+          console.log("Energy: " + this.character.energy);
         }
       });
     });
