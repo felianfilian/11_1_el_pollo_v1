@@ -14,6 +14,7 @@ class Movable {
   currentImage = 0;
   deathImage = 0;
   lookLeft = false;
+  lastHit = 0;
 
   loadImage(path) {
     this.img = new Image();
@@ -105,9 +106,18 @@ class Movable {
 
   getDamage(damage) {
     this.energy -= damage;
+
     if (this.energy <= 0) {
       this.energy = 0;
+    } else {
+      this.lastHit = new Date().getTime();
     }
+  }
+
+  isHurt() {
+    let timepassed = new Date().getTime() - this.lastHit;
+    timepassed = timepassed / 1000;
+    return timepassed < 1;
   }
 
   isDead() {

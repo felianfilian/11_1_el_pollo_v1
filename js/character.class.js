@@ -56,6 +56,7 @@ class Character extends Movable {
     this.loadImages(this.ANIM_WALK);
     this.loadImages(this.ANIM_JUMP);
     this.loadImages(this.ANIM_DEAD);
+    this.loadImages(this.ANIM_HURT);
     this.x = x;
     this.y = y;
     this.height = 300;
@@ -96,7 +97,9 @@ class Character extends Movable {
       if (this.isDead()) {
         this.playAnimationOnce(this.ANIM_DEAD);
       } else {
-        if (!this.isGrounded()) {
+        if (this.isHurt()) {
+          this.playAnimation(this.ANIM_HURT);
+        } else if (!this.isGrounded()) {
           this.playAnimation(this.ANIM_JUMP);
         } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
           this.playAnimation(this.ANIM_WALK);
