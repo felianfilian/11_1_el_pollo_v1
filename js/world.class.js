@@ -5,6 +5,7 @@ class World {
   camera_x = -100;
 
   character = new Character(100, 80);
+  mainUI = new MainUI();
   level = level01;
 
   constructor(canvas, keyboard) {
@@ -23,6 +24,7 @@ class World {
 
     this.iterateDrawObjects(this.level.backgrounds);
     this.addToCanvas(this.character);
+    this.addToCanvas(this.mainUI);
     this.iterateDrawObjects(this.level.clouds);
     this.iterateDrawObjects(this.level.enemies);
 
