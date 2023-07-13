@@ -18,7 +18,7 @@ class MainUI extends Drawable {
   setPercentage(percentage) {
     this.percentage = percentage;
     let path = this.IMAGES_UI[this.resolveImageIndex()];
-    this.img = this;
+    this.img = this.imageChache[path];
   }
 
   resolveImageIndex() {
