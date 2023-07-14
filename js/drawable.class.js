@@ -1,1 +1,3 @@
-class Drawable {}
+class Drawable {
+  test;
+}
