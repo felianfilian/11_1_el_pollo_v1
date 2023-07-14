@@ -1,4 +1,4 @@
-class Movable extends Drawable {
+class Movable {
   x = 120;
   y = 340;
   height = 100;
